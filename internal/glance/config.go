@@ -55,6 +55,7 @@ type config struct {
 
 	Branding struct {
 		HideFooter         bool          `yaml:"hide-footer"`
+		HideLogo                     bool          `yaml:"hide-logo"`
 		CustomFooter       template.HTML `yaml:"custom-footer"`
 		LogoText           string        `yaml:"logo-text"`
 		LogoURL            string        `yaml:"logo-url"`
@@ -63,6 +64,8 @@ type config struct {
 		AppName            string        `yaml:"app-name"`
 		AppIconURL         string        `yaml:"app-icon-url"`
 		AppBackgroundColor string        `yaml:"app-background-color"`
+		ShowDesktopNavigationOnHover bool          `yaml:"show-desktop-navigation-on-hover"`
+		CenterDesktopNavigation      bool          `yaml:"center-desktop-navigation"`
 	} `yaml:"branding"`
 
 	Pages []page `yaml:"pages"`

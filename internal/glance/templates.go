@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"html/template"
 	"math"
+	"net/url"
 	"strconv"
+	"strings"
 
 	"golang.org/x/text/language"
 	"golang.org/x/text/message"
@@ -15,6 +17,16 @@ var intl = message.NewPrinter(language.English)
 var globalTemplateFunctions = template.FuncMap{
 	"formatApproxNumber": formatApproxNumber,
 	"formatNumber":       intl.Sprint,
+	"hasURLPathSuffixFold": func(str, suffix string) bool {
+		if u, err := url.Parse(str); err == nil {
+			str = u.Path
+		} else {
+			str, _, _ = strings.Cut(str, "?")
+			str, _, _ = strings.Cut(str, "#")
+		}
+
+		return strings.HasSuffix(strings.ToLower(str), strings.ToLower(suffix))
+	},
 	"safeCSS": func(str string) template.CSS {
 		return template.CSS(str)
 	},

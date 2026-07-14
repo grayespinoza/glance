@@ -363,11 +363,14 @@ You can adjust the various parts of the branding through a top level `branding` 
 branding:
   custom-footer: |
     <p>Powered by <a href="https://github.com/glanceapp/glance">Glance</a></p>
+  hide-logo: true
   logo-url: /assets/logo.png
   favicon-url: /assets/logo.png
   app-name: "My Dashboard"
   app-icon-url: "/assets/app-icon.png"
   app-background-color: "#151519"
+  show-desktop-navigation-on-hover: true
+  center-desktop-navigation: true
 ```
 
 ### Properties
@@ -375,6 +378,7 @@ branding:
 | Name | Type | Required | Default |
 | ---- | ---- | -------- | ------- |
 | hide-footer | bool | no | false |
+| hide-logo | bool | no | false |
 | custom-footer | string | no |  |
 | logo-text | string | no | G |
 | logo-url | string | no | |
@@ -382,9 +386,14 @@ branding:
 | app-name | string | no | Glance |
 | app-icon-url | string | no | Glance's default icon |
 | app-background-color | string | no | Glance's default background color |
+| show-desktop-navigation-on-hover | boolean | no | false |
+| center-desktop-navigation | boolean | no | false |
 
 #### `hide-footer`
 Hides the footer when set to `true`.
+
+#### `hide-logo`
+Hides the logo in the navigation when set to `true`.
 
 #### `custom-footer`
 Specify custom HTML to use for the footer.
@@ -406,6 +415,12 @@ Specify URL for PWA and browser tab icon (512x512 PNG).
 
 #### `app-background-color`
 Specify background color for PWA. Must be a valid CSS color.
+
+#### `show-desktop-navigation-on-hover`
+When set to `true`, hides the desktop navigation at the top edge of the page until the top edge is hovered or the navigation receives focus. Has no effect on mobile navigation.
+
+#### `center-desktop-navigation`
+When set to `true`, centers desktop navigation links instead of aligning them from the start.
 
 ## Theme
 Theming is done through a top level `theme` property. Values for the colors are in [HSL](https://giggster.com/guide/basics/hue-saturation-lightness/) (hue, saturation, lightness) format. You can use a color picker [like this one](https://hslpicker.com/) to convert colors from other formats to HSL. The values are separated by a space and `%` is not required for any of the numbers.
