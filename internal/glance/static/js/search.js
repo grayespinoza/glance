@@ -283,7 +283,7 @@ export default function SearchBox(widget) {
 
     function performSearch(query) {
         const url = defaultSearchUrl.replace("!QUERY!", encodeURIComponent(query));
-        if (newTab) {
+        if (newTab && !event.ctrlKey || !newTab && event.ctrlKey) {
             window.open(url, target).focus();
         } else {
             window.location.href = url;
@@ -411,7 +411,7 @@ export default function SearchBox(widget) {
 
             const url = searchUrlTemplate.replace("!QUERY!", encodeURIComponent(query));
 
-            if (newTab) {
+            if (newTab && !event.ctrlKey || !newTab && event.ctrlKey) {
                 window.open(url, target).focus();
             } else {
                 window.location.href = url;
